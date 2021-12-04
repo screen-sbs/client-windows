@@ -1,0 +1,3 @@
+[submodule "src/InputHelper"]
+	path = src/InputHelper
+	url = git@github.com:Visual-Vincent/InputHelper.git
