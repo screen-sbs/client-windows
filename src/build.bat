@@ -23,5 +23,3 @@ iscc installer\installer.iss
 mkdir out
 move %clientOut%\portable.zip out\
 move %installerOut%\setup.exe out\
-
-pause
