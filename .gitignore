@@ -2,4 +2,5 @@ src/client/client/bin
 src/client/client/obj
 src/client/packages
 src/client/.vs
+src/installer/installer.iss.bak
 src/out

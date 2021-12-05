@@ -62,7 +62,14 @@ Public Class Hotkey
             Case 5
                 Paste.Show()
             Case 6
-                Paste.upload(Clipboard.GetText)
+                Dim cb = Clipboard.GetText()
+                If Not cb = "" And
+                        Not cb = " " And
+                        Not cb = vbCrLf And
+                        Not cb = vbCr And
+                        Not cb = vbLf Then
+                    Paste.upload(Clipboard.GetText)
+                End If
         End Select
     End Sub
 #End Region
