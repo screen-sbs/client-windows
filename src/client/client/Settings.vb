@@ -26,6 +26,7 @@ Public Class Settings
         keyPasteClipboard.Text = My.Settings.keyPasteClipboard
         modPasteClipboard.Text = My.Settings.modPasteClipboard
         token.Text = My.Settings.token
+        uploadUrl.Text = My.Settings.uploadUrl
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -191,5 +192,13 @@ Public Class Settings
 
     Private Sub token_TextChanged(sender As Object, e As EventArgs) Handles token.TextChanged
         My.Settings.token = token.Text
+    End Sub
+
+    Private Sub uploadUrl_TextChanged(sender As Object, e As EventArgs) Handles uploadUrl.TextChanged
+        If uploadUrl.Text = "" Then
+            My.Settings.uploadUrl = "https://screen.sbs/upload/"
+        Else
+            My.Settings.uploadUrl = uploadUrl.Text
+        End If
     End Sub
 End Class

@@ -69,6 +69,9 @@ Partial Class Settings
         Me.token = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.uploadUrl = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -87,7 +90,7 @@ Partial Class Settings
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(299, 305)
+        Me.Button1.Location = New System.Drawing.Point(299, 332)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 23)
         Me.Button1.TabIndex = 2
@@ -97,7 +100,7 @@ Partial Class Settings
         'Button2
         '
         Me.Button2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(36, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button2.Location = New System.Drawing.Point(354, 276)
+        Me.Button2.Location = New System.Drawing.Point(354, 303)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(49, 23)
         Me.Button2.TabIndex = 3
@@ -106,7 +109,7 @@ Partial Class Settings
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(299, 276)
+        Me.Button3.Location = New System.Drawing.Point(299, 303)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(49, 23)
         Me.Button3.TabIndex = 4
@@ -171,7 +174,7 @@ Partial Class Settings
         Me.GroupBox1.Controls.Add(Me.checkSaveLocally)
         Me.GroupBox1.Controls.Add(Me.btnLocalPath)
         Me.GroupBox1.Controls.Add(Me.localPath)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 276)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 303)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(162, 47)
         Me.GroupBox1.TabIndex = 13
@@ -259,7 +262,7 @@ Partial Class Settings
         Me.GroupBox2.Controls.Add(Me.modSelectionSC)
         Me.GroupBox2.Controls.Add(Me.keyFullscreenSC)
         Me.GroupBox2.Controls.Add(Me.modFullscreenSC)
-        Me.GroupBox2.Location = New System.Drawing.Point(207, 70)
+        Me.GroupBox2.Location = New System.Drawing.Point(207, 97)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(217, 200)
         Me.GroupBox2.TabIndex = 20
@@ -488,20 +491,23 @@ Partial Class Settings
         '
         'token
         '
-        Me.token.Location = New System.Drawing.Point(7, 19)
+        Me.token.Location = New System.Drawing.Point(72, 19)
         Me.token.Name = "token"
-        Me.token.Size = New System.Drawing.Size(399, 20)
+        Me.token.Size = New System.Drawing.Size(334, 20)
         Me.token.TabIndex = 21
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Label15)
+        Me.GroupBox3.Controls.Add(Me.Label14)
+        Me.GroupBox3.Controls.Add(Me.uploadUrl)
         Me.GroupBox3.Controls.Add(Me.token)
         Me.GroupBox3.Location = New System.Drawing.Point(12, 15)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(412, 49)
+        Me.GroupBox3.Size = New System.Drawing.Size(412, 74)
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "screen.sbs token"
+        Me.GroupBox3.Text = "Upload settings"
         '
         'GroupBox4
         '
@@ -514,18 +520,43 @@ Partial Class Settings
         Me.GroupBox4.Controls.Add(Me.checkUpdates)
         Me.GroupBox4.Controls.Add(Me.checkCopyClipboard)
         Me.GroupBox4.Controls.Add(Me.numericVideoDuration)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 70)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 97)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(189, 200)
         Me.GroupBox4.TabIndex = 23
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Misc"
         '
+        'uploadUrl
+        '
+        Me.uploadUrl.Location = New System.Drawing.Point(72, 45)
+        Me.uploadUrl.Name = "uploadUrl"
+        Me.uploadUrl.Size = New System.Drawing.Size(334, 20)
+        Me.uploadUrl.TabIndex = 22
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(8, 22)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(38, 13)
+        Me.Label14.TabIndex = 23
+        Me.Label14.Text = "Token"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(8, 48)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(29, 13)
+        Me.Label15.TabIndex = 24
+        Me.Label15.Text = "URL"
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(433, 335)
+        Me.ClientSize = New System.Drawing.Size(433, 366)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -596,4 +627,7 @@ Partial Class Settings
     Friend WithEvents token As TextBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents uploadUrl As TextBox
 End Class

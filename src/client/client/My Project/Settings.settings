@@ -68,5 +68,8 @@
     <Setting Name="token" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="uploadUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://screen.sbs/upload/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

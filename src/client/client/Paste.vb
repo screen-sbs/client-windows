@@ -20,7 +20,7 @@ Public Class Paste
         Try
             Dim res
             Using wc As New WebClient
-                res = wc.UploadFile("https://upload.screen.sbs/?token=" + My.Settings.token, filepath)
+                res = wc.UploadFile(My.Settings.uploadUrl + My.Settings.token, filepath)
             End Using
 
             resS = System.Text.Encoding.ASCII.GetString(res)
@@ -68,12 +68,9 @@ Public Class Paste
         End If
     End Sub
 
-
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         upload(RichTextBox1.Text)
         RichTextBox1.Text = ""
         Me.Hide()
     End Sub
-
 End Class

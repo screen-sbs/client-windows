@@ -255,7 +255,7 @@ Public Class CaptureScreen
         Try
             Dim res
             Using wc As New WebClient
-                res = wc.UploadFile("https://screen.sbs/upload/" + My.Settings.token, filepath)
+                res = wc.UploadFile(My.Settings.uploadUrl + My.Settings.token, filepath)
             End Using
 
             resS = Text.Encoding.ASCII.GetString(res)
