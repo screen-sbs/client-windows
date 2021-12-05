@@ -3,6 +3,7 @@ set root=%CD%
 set clientOut="client\client\bin\x64\Release"
 set installerOut="installer\Output"
 
+FOR /F "tokens=* USEBACKQ" %%g IN (`git describe --tags --abbrev^=0 origin/master`) do (SET version=%%g)
 
 :: Build client
 nuget restore "client"
@@ -22,5 +23,5 @@ iscc installer\installer.iss
 
 :: Move artifacts to out dir
 mkdir out
-move %clientOut%\portable.zip out\
-move %installerOut%\setup.exe out\
+move %clientOut%\portable.zip out\screen-sbs_%version%.zip
+move %installerOut%\setup.exe out\setup_screen-sbs_%version%.exe
