@@ -11,7 +11,8 @@ msbuild "client\client.sln" /property:Configuration=Release /property:Platform=x
 cd %clientOut%
 del LICENSE-InputHelper.txt
 ren LICENSE.txt LICENSE-InputHelper.txt
-tar -a -cf portable.zip screen.exe InputHelper.dll ScreenRecorderLib.dll LICENSE-InputHelper.txt
+copy %root%\..\LICENSE LICENSE.txt
+tar -a -cf portable.zip screen-sbs.exe InputHelper.dll ScreenRecorderLib.dll LICENSE.txt LICENSE-InputHelper.txt
 cd %root%
 
 
