@@ -68,7 +68,7 @@ Public Class Hotkey
                         Not cb = vbCrLf And
                         Not cb = vbCr And
                         Not cb = vbLf Then
-                    Paste.upload(Clipboard.GetText)
+                    Paste.uploadText(Clipboard.GetText)
                 End If
         End Select
     End Sub

@@ -162,6 +162,7 @@
     <Compile Include="startup.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Upload.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Capture\frmBorder.resx">
