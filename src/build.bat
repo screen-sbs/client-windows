@@ -6,6 +6,8 @@ set installerOut="installer\Output"
 FOR /F "tokens=* USEBACKQ" %%g IN (`git describe --tags --abbrev^=0`) do (SET version=%%g)
 
 :: Build client
+
+Powershell.exe -executionpolicy remotesigned -File updateversion.ps1 %version%
 nuget restore "client"
 msbuild "client\client.sln" /property:Configuration=Release /property:Platform=x64
 
