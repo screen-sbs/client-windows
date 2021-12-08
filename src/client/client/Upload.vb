@@ -45,13 +45,28 @@ Public Class Upload
             End Using
 
             resS = Text.Encoding.ASCII.GetString(res)
-        Catch ex As Exception
+
+            If resS = "error" Then Throw New WebException
+        Catch ex As WebException
+            Try
+                Dim statusCode = TryCast(ex.Response, HttpWebResponse).StatusCode
+                If statusCode = 400 Then
+                    MessageBox.Show("Uploaded file was empty. Check your paths or try running as admin")
+                ElseIf statusCode = 401 Then
+                    MessageBox.Show("Invalid upload token")
+                ElseIf statusCode = 500 Then
+                    MessageBox.Show("Server error while handling upload")
+                Else
+                    MessageBox.Show("Error while uploading")
+                End If
+            Catch ex2 As Exception
+                MessageBox.Show("Error while uploading")
+                resS = "error"
+            End Try
             resS = "error"
         End Try
 
-        If resS = "error" Then
-            MessageBox.Show("error")
-        Else
+        If Not resS = "error" Then
             If My.Settings.copyLink Then Clipboard.SetText(resS)
             If My.Settings.playBeep Then Console.Beep()
             If My.Settings.openInBrowser Then Process.Start(resS)
