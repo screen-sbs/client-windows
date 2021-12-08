@@ -3,7 +3,7 @@ set root=%CD%
 set clientOut="client\client\bin\x64\Release"
 set installerOut="installer\Output"
 
-FOR /F "tokens=* USEBACKQ" %%g IN (`git describe --tags --abbrev^=0 origin/master`) do (SET version=%%g)
+FOR /F "tokens=* USEBACKQ" %%g IN (`git describe --tags --abbrev^=0`) do (SET version=%%g)
 
 :: Build client
 nuget restore "client"
