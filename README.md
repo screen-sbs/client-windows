@@ -5,6 +5,7 @@ Requires access to a (self-)hosted instance of the [screen.sbs server](https://g
 <br>
 
 ### [Preview video](https://screen.sbs/vwx7akns6l4)
+![](https://screen.sbs/i/3tszd251bz.png)
 
 ### Features
 - Capture & Upload fullscreen (primary screen) & area screenshot
@@ -13,7 +14,7 @@ Requires access to a (self-)hosted instance of the [screen.sbs server](https://g
 
 #### Keybinds
 
-Keybinds support a modifier (Alt, Ctrl, Win) + Key
+Keybinds support a modifier (Sift, Alt, Ctrl, Win) + Key
 Key codes can be found [here](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-5.0)
 
 __Default binds__
