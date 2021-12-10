@@ -54,6 +54,8 @@ Public Class Upload
                     MessageBox.Show("Uploaded file was empty. Check your paths or try running as admin")
                 ElseIf statusCode = 401 Then
                     MessageBox.Show("Invalid upload token")
+                ElseIf statusCode = 413 Then
+                    MessageBox.Show("File size limit exceeded. If this was a video try reducing the duration")
                 ElseIf statusCode = 500 Then
                     MessageBox.Show("Server error while handling upload")
                 Else
