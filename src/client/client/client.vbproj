@@ -101,6 +101,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Capture\Capture.vb" />
     <Compile Include="Capture\frmBorder.Designer.vb">
       <DependentUpon>frmBorder.vb</DependentUpon>

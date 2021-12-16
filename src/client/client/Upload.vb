@@ -29,6 +29,15 @@ Public Class Upload
             Thread.Sleep(100)
         Loop
 
+        ' convert .jp(e)g and .bmp to .png
+        If filePath.EndsWith(".jpg") Or filePath.EndsWith(".jpeg") Or filePath.EndsWith(".bmp") Then
+            Dim newPath = Path.GetTempPath + "screen_sbs_" + CaptureScreen.RandomString(12) + ".png"
+            Dim src = Image.FromFile(filePath)
+            src.Save(newPath, Imaging.ImageFormat.Png)
+            src.Dispose()
+            filePath = newPath
+        End If
+
         If My.Settings.saveLocally Then
             Try
                 Dim ext = filePath.Substring(filePath.Length - 4)
@@ -107,10 +116,18 @@ Public Class Upload
     End Sub
 
     Public Shared Function post(filePath As String)
-        Dim uploadThread As New Thread(Sub() doUpload(filePath, My.Settings.uploadUrl))
-        uploadThread.SetApartmentState(ApartmentState.STA)
-        uploadThread.Start()
+        If filePath.EndsWith(".png") Or filePath.EndsWith(".mp4") Or
+            filePath.EndsWith(".txt") Or filePath.EndsWith(".jpg") Or
+            filePath.EndsWith(".jpeg") Or filePath.EndsWith(".bmp") Then
 
-        Return uploadThread
+            Dim uploadThread As New Thread(Sub() doUpload(filePath, My.Settings.uploadUrl))
+            uploadThread.SetApartmentState(ApartmentState.STA)
+            uploadThread.Start()
+
+            Return uploadThread
+        Else
+            MessageBox.Show("Only png, jp(e)g, bmp, mp4 and txt files are currently supported")
+            Return Nothing
+        End If
     End Function
 End Class

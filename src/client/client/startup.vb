@@ -1,6 +1,12 @@
 ﻿Imports System.IO
 
 Public Class startup
+    Friend Sub NewArgumentsReceived(args As String())
+        For Each s As String In args
+            Upload.post(s)
+        Next
+    End Sub
+
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
         If m.Msg = Hotkey.WM_HOTKEY Then
             Hotkey.handleHotKeyEvent(m.WParam)

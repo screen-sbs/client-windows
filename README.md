@@ -11,6 +11,7 @@ Requires access to a (self-)hosted instance of the [screen.sbs server](https://g
 - Capture & Upload fullscreen (primary screen) & area screenshot
 - Capture & Upload fullscreen (primary screen) & area video
 - Upload clipboard or input text
+- "Send to.." context menu entry to upload files directly
 
 #### Keybinds
 

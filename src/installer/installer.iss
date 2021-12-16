@@ -50,6 +50,9 @@ Source: "..\client\client\bin\x64\Release\InputHelper.dll"; DestDir: "{app}"; Fl
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+[Icons]
+Name: "{usersendto}\Upload using screen.sbs"; Filename: "{app}\{#MyAppExeName}" 
+
 [Registry]
 Root: "HKCU"; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "screen.sbs"; ValueData: "{app}\{#MyAppExeName}"; Flags: uninsdeletevalue
 [Run]
