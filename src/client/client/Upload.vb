@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Threading
 Imports System.Net
 Imports System.Environment
+Imports Newtonsoft.Json
 
 Public Class Upload
     Public Shared Function FileAvailable(ByVal file As FileInfo) As Boolean
@@ -23,6 +24,13 @@ Public Class Upload
         Return errorCode = 32 OrElse errorCode = 33
     End Function
 
+    Public Class serverConfig
+        <JsonProperty("fileSizeLimit")>
+        Public Property fileSizeLimit As Integer
+
+        <JsonProperty("fileNameLength")>
+        Public Property fileNameLength As Integer
+    End Class
 
     Private Shared Sub doUpload(filePath As String, url As String)
         Do Until FileAvailable(New FileInfo(filePath))
@@ -38,25 +46,28 @@ Public Class Upload
             filePath = newPath
         End If
 
-        If My.Settings.saveLocally Then
-            Try
-                Dim ext = filePath.Substring(filePath.Length - 4)
-                File.Copy(filePath, My.Settings.localPath + "\" + Now.ToString("yyyy-MM-dd_HH-mm-ss") + ext)
-            Catch ex As Exception
-            End Try
-        End If
-
         Dim resS
         Try
             Dim res
             Using wc As New WebClient
-                res = wc.UploadFile(My.Settings.uploadUrl + My.Settings.token, filePath)
+                Dim cfg = wc.DownloadString(My.Settings.serverUrl + "/config")
+                Dim json = JsonConvert.DeserializeObject(Of serverConfig)(cfg)
+                If New FileInfo(filePath).Length / 1024 / 1024 > json.fileSizeLimit Then
+                    resS = "error_size"
+                    Throw New WebException
+                End If
+                res = wc.UploadFile(My.Settings.serverUrl + "/upload/" + My.Settings.token, filePath)
             End Using
 
             resS = Text.Encoding.ASCII.GetString(res)
 
             If resS = "error" Then Throw New WebException
         Catch ex As WebException
+            If resS = "error_size" Then
+                MessageBox.Show("File size exceeds server limit.")
+                resS = "error"
+                Exit Try
+            End If
             Try
                 Dim statusCode = TryCast(ex.Response, HttpWebResponse).StatusCode
                 If statusCode = 400 Then
@@ -113,6 +124,14 @@ Public Class Upload
                 LinkList.updateLinks()
             End If
         End If
+
+        If My.Settings.saveLocally Then
+            Try
+                Dim ext = filePath.Substring(filePath.Length - 4)
+                File.Copy(filePath, My.Settings.localPath + "\" + Now.ToString("yyyy-MM-dd_HH-mm-ss") + ext)
+            Catch ex As Exception
+            End Try
+        End If
     End Sub
 
     Public Shared Function post(filePath As String)
@@ -120,7 +139,7 @@ Public Class Upload
             filePath.EndsWith(".txt") Or filePath.EndsWith(".jpg") Or
             filePath.EndsWith(".jpeg") Or filePath.EndsWith(".bmp") Then
 
-            Dim uploadThread As New Thread(Sub() doUpload(filePath, My.Settings.uploadUrl))
+            Dim uploadThread As New Thread(Sub() doUpload(filePath, My.Settings.serverUrl + "/upload/"))
             uploadThread.SetApartmentState(ApartmentState.STA)
             uploadThread.Start()
 

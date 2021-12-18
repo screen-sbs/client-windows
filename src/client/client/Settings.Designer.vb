@@ -68,10 +68,10 @@ Partial Class Settings
         Me.modFullscreenSC = New System.Windows.Forms.ComboBox()
         Me.token = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.uploadUrl = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.uploadUrl = New System.Windows.Forms.TextBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -509,6 +509,31 @@ Partial Class Settings
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Upload settings"
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(8, 48)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(63, 13)
+        Me.Label15.TabIndex = 24
+        Me.Label15.Text = "Server URL"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(8, 22)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(38, 13)
+        Me.Label14.TabIndex = 23
+        Me.Label14.Text = "Token"
+        '
+        'uploadUrl
+        '
+        Me.uploadUrl.Location = New System.Drawing.Point(72, 45)
+        Me.uploadUrl.Name = "uploadUrl"
+        Me.uploadUrl.Size = New System.Drawing.Size(334, 20)
+        Me.uploadUrl.TabIndex = 22
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Label2)
@@ -526,31 +551,6 @@ Partial Class Settings
         Me.GroupBox4.TabIndex = 23
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Misc"
-        '
-        'uploadUrl
-        '
-        Me.uploadUrl.Location = New System.Drawing.Point(72, 45)
-        Me.uploadUrl.Name = "uploadUrl"
-        Me.uploadUrl.Size = New System.Drawing.Size(334, 20)
-        Me.uploadUrl.TabIndex = 22
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(8, 22)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(38, 13)
-        Me.Label14.TabIndex = 23
-        Me.Label14.Text = "Token"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(8, 48)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(29, 13)
-        Me.Label15.TabIndex = 24
-        Me.Label15.Text = "URL"
         '
         'Settings
         '

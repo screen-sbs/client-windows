@@ -320,13 +320,13 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://screen.sbs/upload/")>  _
-        Public Property uploadUrl() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("https://screen.sbs/")>  _
+        Public Property serverUrl() As String
             Get
-                Return CType(Me("uploadUrl"),String)
+                Return CType(Me("serverUrl"),String)
             End Get
             Set
-                Me("uploadUrl") = value
+                Me("serverUrl") = value
             End Set
         End Property
     End Class
